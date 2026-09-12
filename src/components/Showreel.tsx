@@ -43,6 +43,7 @@ export const Showreel: React.FC = () => {
       <div className="w-full relative px-6 md:px-12 max-w-[100rem] mx-auto">
         <div 
           onClick={togglePlay}
+          data-cursor="PLAY"
           className="relative w-full aspect-video md:aspect-[21/9] bg-card rounded-2xl md:rounded-3xl overflow-hidden border border-white/[0.12] group cursor-pointer shadow-2xl"
         >
           {/* Fallback image */}

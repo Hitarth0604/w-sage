@@ -20,15 +20,17 @@ export const CTASection: React.FC<CTASectionProps> = ({ onStartProject, onExplor
         </div>
 
         {/* Dramatic Typography */}
-        <h2 className="text-4xl sm:text-6xl md:text-8xl font-bold uppercase tracking-tightest leading-[0.92] text-text-primary max-w-5xl">
-          <span>HAVE A PROJECT </span>
-          <br />
-          <span className="text-text-secondary">IN MIND?</span>
+        <h2 className="text-[10vw] sm:text-[8vw] md:text-[6vw] font-bold uppercase tracking-tighter leading-[0.9] text-text-primary max-w-5xl">
+          <span className="text-text-secondary">HAVE A BRIEF?</span>
           <br />
           <span>LET'S MAKE </span>
-          <span className="font-serif-italic font-normal text-accent lowercase">
-            something good.
+          <br />
+          <span>SOMETHING </span>
+          <span className="font-sans text-accent">
+            PEOPLE
           </span>
+          <br />
+          <span>REMEMBER.</span>
         </h2>
 
         <p className="text-base sm:text-xl text-text-secondary max-w-2xl font-normal leading-relaxed">
@@ -36,12 +38,13 @@ export const CTASection: React.FC<CTASectionProps> = ({ onStartProject, onExplor
         </p>
 
         {/* Primary Action Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+        <div className="flex flex-wrap items-center justify-center gap-4 pt-8">
           <button
             onClick={onStartProject}
-            className="group inline-flex items-center gap-3 px-9 py-4 rounded-full text-xs font-semibold tracking-widest uppercase text-canvas bg-accent hover:bg-white transition-all duration-300 shadow-xl shadow-accent/20 hover:scale-[1.03]"
+            className="group inline-flex items-center gap-3 px-10 py-5 rounded-full text-xs font-semibold tracking-widest uppercase text-canvas bg-accent hover:bg-white transition-all duration-300 shadow-xl shadow-accent/20 hover:scale-[1.03]"
           >
-            <span>START A PROJECT</span>
+            <span className="group-hover:hidden">START A PROJECT</span>
+            <span className="hidden group-hover:inline">LET'S DO THIS</span>
             <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
           </button>
 

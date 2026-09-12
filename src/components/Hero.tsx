@@ -45,28 +45,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onExploreWork }) => {
           <span className="text-text-secondary">EST. {AGENCY_INFO.foundedYear}</span>
         </div>
 
-        {/* PRD Section 40: Interactive Headline Tester */}
-        <div className="flex items-center gap-2 bg-white/[0.03] p-1 rounded-full border border-white/[0.08]">
-          <span className="text-[10px] text-text-muted px-2 flex items-center gap-1 font-sans">
-            <Sparkles className="w-3 h-3 text-accent" /> HEADLINE:
+        {/* Static PRD Headline Mode */}
+        <div className="flex items-center gap-2 bg-white/[0.03] p-1.5 px-3 rounded-full border border-white/[0.08]">
+          <span className="text-[10px] text-text-muted flex items-center gap-1 font-sans tracking-widest uppercase">
+            <Sparkles className="w-3 h-3 text-accent" /> CREATIVE IDENTITY: LOCKED
           </span>
-          {HERO_OPTIONS.map((opt) => (
-            <button
-              key={opt.id}
-              onClick={() => {
-                playClickSound();
-                setSelectedOptionId(opt.id);
-              }}
-              onMouseEnter={playHoverSound}
-              className={`px-2.5 py-1 text-[10px] font-sans font-medium rounded-full transition-all duration-300 ${
-                selectedOptionId === opt.id
-                  ? 'bg-text-primary text-canvas font-semibold shadow-sm'
-                  : 'text-text-muted hover:text-text-primary'
-              }`}
-            >
-              {opt.label}
-            </button>
-          ))}
         </div>
 
         <div className="hidden md:flex items-center gap-2 text-text-secondary">
@@ -83,18 +66,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onExploreWork }) => {
             <span>01 // WSAGE PRODUCTION</span>
           </div>
 
-          <h1 className="text-[14vw] sm:text-[9vw] lg:text-[6.2vw] font-bold leading-[0.9] tracking-tightest text-text-primary uppercase select-none transition-all duration-300">
-            <span className="block font-sans">{activeOption.part1}</span>
-            <span className="block font-sans text-text-primary/95 tracking-tighter">
-              {activeOption.part2}
+          <h1 className="text-[14vw] sm:text-[9vw] lg:text-[7vw] font-bold leading-[0.9] tracking-tighter text-text-primary uppercase select-none transition-all duration-300">
+            <span className="block font-sans">WE MAKE</span>
+            <span className="block font-sans text-text-primary/95">
+              IDEAS
             </span>
-            <span className="block font-serif-italic font-normal text-accent lowercase md:tracking-normal">
-              {activeOption.part3}
+            <span className="block font-sans text-accent">
+              MOVE.
             </span>
           </h1>
 
           <p className="mt-8 text-base md:text-lg text-text-secondary max-w-xl font-normal leading-relaxed">
-            {AGENCY_INFO.subTagline} Turning ideas into visual experiences that people actually stop scrolling for.
+            Video, design and visual content for brands that want to be noticed.
           </p>
 
           {/* Primary Action Buttons */}
@@ -119,7 +102,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onExploreWork }) => {
               onMouseEnter={playHoverSound}
               className="group inline-flex items-center gap-3 px-7 py-4 rounded-full text-xs font-semibold tracking-widest uppercase text-text-primary bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.12] transition-all duration-300"
             >
-              <span>VIEW OUR WORK</span>
+              <span>SEE OUR WORK</span>
               <ArrowDown className="w-3.5 h-3.5 text-text-muted group-hover:text-accent transition-transform duration-300 group-hover:translate-y-1" />
             </button>
           </div>

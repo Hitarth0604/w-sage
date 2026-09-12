@@ -20,11 +20,15 @@ export const CustomCursor: React.FC = () => {
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
+      const dataCursorEl = target.closest('[data-cursor]');
       const clickable = target.closest('button, a, input, textarea, [role="button"]');
       const projectCard = target.closest('#work .group');
       const serviceRow = target.closest('#services .group');
 
-      if (projectCard) {
+      if (dataCursorEl) {
+        setIsHovered(true);
+        setCursorText(dataCursorEl.getAttribute('data-cursor') || '');
+      } else if (projectCard) {
         setIsHovered(true);
         setCursorText('VIEW');
       } else if (serviceRow) {

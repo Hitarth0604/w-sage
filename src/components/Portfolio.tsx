@@ -74,6 +74,16 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
               onClick={() => onSelectProject(project)}
               className={`${colSpan} group cursor-pointer flex flex-col gap-4`}
             >
+              {/* Featured Label above the primary project */}
+              {index === 0 && activeFilter === 'all' && (
+                <div className="flex items-center gap-3 mb-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                  <span className="text-[11px] font-mono tracking-widest text-text-muted uppercase">
+                    FEATURED PROJECT
+                  </span>
+                </div>
+              )}
+
               {/* Image Container with Subtle Hover Scale */}
               <div
                 className={`relative w-full ${heightClass} rounded-2xl overflow-hidden border border-white/[0.1] bg-card`}
@@ -109,12 +119,12 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
               </div>
 
               {/* Card Footer Details */}
-              <div className="flex items-start justify-between gap-4 px-1">
+              <div className="flex flex-col sm:flex-row items-start justify-between gap-4 px-1 mt-2">
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold uppercase tracking-tight text-text-primary group-hover:text-accent transition-colors duration-300">
+                  <h3 className={`font-bold uppercase tracking-tight text-text-primary group-hover:text-accent transition-colors duration-300 ${index === 0 && activeFilter === 'all' ? 'text-3xl sm:text-5xl' : 'text-xl sm:text-2xl'}`}>
                     {project.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-text-secondary mt-1 font-normal line-clamp-1">
+                  <p className={`text-text-secondary mt-2 font-normal line-clamp-2 max-w-xl ${index === 0 && activeFilter === 'all' ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}>
                     {project.tagline}
                   </p>
                 </div>
