@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react';
 import { TerminalPreloader } from './components/TerminalPreloader';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { TrustStrip } from './components/TrustStrip';
+import { Metrics } from './components/Metrics';
+import { Ecosystem } from './components/Ecosystem';
+import { Showreel } from './components/Showreel';
 import { StatementSection } from './components/StatementSection';
 import { Services } from './components/Services';
 import { Portfolio } from './components/Portfolio';
@@ -61,6 +65,9 @@ export function App() {
           onExploreWork={handleExploreWork}
         />
 
+        {/* NEW // TRUST STRIP */}
+        <TrustStrip />
+
         {/* 02 // MANIFESTO & INTRO STATEMENT */}
         <StatementSection />
 
@@ -76,11 +83,20 @@ export function App() {
         {/* 06 // PROCESS TIMELINE (DISCOVER TO DELIVER) */}
         <Process />
 
+        {/* NEW // RESULTS & METRICS */}
+        <Metrics />
+
         {/* 07 // ABOUT STUDIO */}
         <About onStartProject={() => handleOpenContact()} />
 
         {/* 08 // TESTIMONIALS */}
         <Testimonials />
+
+        {/* NEW // CLIENT ECOSYSTEM */}
+        <Ecosystem />
+
+        {/* NEW // SHOWREEL */}
+        <Showreel />
 
         {/* 09 // DRAMATIC CTA */}
         <CTASection
