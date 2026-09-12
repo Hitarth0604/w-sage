@@ -63,7 +63,7 @@ export const AGENCY_INFO = {
   name: "WSAGE",
   tagline: "Wise design for the modern world.",
   subTagline: "Video · Design · Motion · Branding. One creative studio for everything visual.",
-  foundedYear: "2024",
+  foundedYear: "2020",
   location: "Based in India · Working Worldwide",
   email: "weeesage@gmail.com",
   backupEmail: "hello@wsage.studio",
