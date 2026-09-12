@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://wsagestudio.in/sitemap.xml
+Sitemap: https://w-sage-pi.vercel.app/sitemap.xml
