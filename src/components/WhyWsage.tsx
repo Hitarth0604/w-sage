@@ -30,66 +30,26 @@ export const WhyWsage: React.FC<WhyWsageProps> = ({ onStartProject }) => {
         </p>
       </div>
 
-      {/* 5 Core Principles Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {PRINCIPLES.map((item, idx) => {
-          // Span 2 columns on the last card for balanced layout
-          const isWide = idx === 4;
-
-          return (
-            <div
-              key={item.number}
-              className={`p-8 rounded-2xl bg-card border border-white/[0.08] hover:border-accent/40 transition-all duration-300 flex flex-col justify-between group ${
-                isWide ? 'lg:col-span-2' : ''
-              }`}
-            >
-              <div className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <span className="text-3xl font-extrabold font-mono text-white/20 group-hover:text-accent transition-colors duration-300">
-                    {item.number}
-                  </span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-accent group-hover:scale-150 transition-all duration-300" />
-                </div>
-
-                <h3 className="text-xl font-bold uppercase tracking-tight text-text-primary group-hover:text-accent transition-colors duration-300">
-                  {item.title}
-                </h3>
-
-                <p className="text-sm text-text-secondary leading-relaxed font-normal">
-                  {item.description}
-                </p>
-              </div>
-
-              <div className="pt-8 mt-6 border-t border-white/[0.04] flex items-center justify-between text-[11px] font-mono text-text-muted">
-                <span>WSAGE PRINCIPLE</span>
-                <span className="group-hover:translate-x-1 transition-transform text-accent">→</span>
-              </div>
-            </div>
-          );
-        })}
-
-        {/* Agency CTA Card */}
-        <div className="p-8 rounded-2xl bg-gradient-to-br from-surface to-canvas border border-accent/30 flex flex-col justify-between group">
-          <div className="space-y-4">
-            <span className="text-[11px] font-mono tracking-widest text-accent uppercase">
-              // READY TO BUILD
-            </span>
-            <h3 className="text-2xl font-bold uppercase tracking-tight text-text-primary">
-              EXPERIENCE THE STANDARD.
-            </h3>
-            <p className="text-xs text-text-secondary leading-relaxed">
-              Book a discovery session with our senior directors and see how WSAGE elevates your brand.
-            </p>
-          </div>
-
-          <button
-            onClick={onStartProject}
-            className="mt-6 w-full py-3.5 rounded-full bg-accent text-canvas text-xs font-semibold tracking-widest uppercase flex items-center justify-center gap-2 hover:bg-white transition-colors"
+      {/* Editorial Statements List */}
+      <div className="flex flex-col border-t border-white/[0.12]">
+        {PRINCIPLES.map((item) => (
+          <div
+            key={item.number}
+            className="group py-12 md:py-16 border-b border-white/[0.08] flex flex-col md:flex-row gap-6 md:gap-16 items-start"
           >
-            <span>START A PROJECT</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </button>
-        </div>
+            <span className="text-sm font-mono tracking-widest text-text-muted mt-2 shrink-0">
+              {item.number}
+            </span>
+            <div className="flex-1">
+              <h3 className="text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-text-primary group-hover:text-accent transition-colors duration-300">
+                {item.title}
+              </h3>
+              <p className="text-base md:text-lg text-text-secondary mt-6 max-w-2xl font-normal leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
