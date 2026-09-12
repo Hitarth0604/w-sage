@@ -21,6 +21,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService }) 
   const [timeline, setTimeline] = useState(TIMELINE_OPTIONS[1]);
   const [details, setDetails] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     if (preselectedService) {
@@ -36,23 +38,56 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService }) 
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email) return;
 
-    // Trigger celebratory confetti
-    try {
-      confetti({
-        particleCount: 80,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ['#D7F000', '#FFFFFF', '#8E8E8A']
-      });
-    } catch {
-      // safe fallback
-    }
+    setIsSubmitting(true);
+    setError(false);
 
-    setSubmitted(true);
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: '92cb3adf-eae4-4513-ad61-bb6f4591aec8',
+          subject: `WSAGE Project Inquiry - ${company || name}`,
+          from_name: name,
+          email: email,
+          company: company || 'Not provided',
+          services: selectedServices.join(', ') || 'Not selected',
+          budget: budget,
+          timeline: timeline,
+          message: details || 'No additional details provided.'
+        })
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        // Trigger celebratory confetti
+        try {
+          confetti({
+            particleCount: 80,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#D7F000', '#FFFFFF', '#8E8E8A']
+          });
+        } catch {
+          // safe fallback
+        }
+        setSubmitted(true);
+      } else {
+        setError(true);
+      }
+    } catch (err) {
+      setError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -279,11 +314,18 @@ export const ContactForm: React.FC<ContactFormProps> = ({ preselectedService }) 
               {/* Submit CTA */}
               <button
                 type="submit"
-                className="w-full py-4 rounded-full bg-accent hover:bg-white text-canvas font-bold text-xs tracking-widest uppercase flex items-center justify-center gap-2 shadow-xl shadow-accent/20 transition-all duration-300 group"
+                disabled={isSubmitting}
+                className="w-full py-4 rounded-full bg-accent hover:bg-white text-canvas font-bold text-xs tracking-widest uppercase flex items-center justify-center gap-2 shadow-xl shadow-accent/20 transition-all duration-300 group disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                <span>SEND PROJECT INQUIRY</span>
-                <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <span>{isSubmitting ? 'SENDING INQUIRY...' : 'SEND PROJECT INQUIRY'}</span>
+                {!isSubmitting && <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />}
               </button>
+              
+              {error && (
+                <p className="text-red-400 text-xs text-center font-mono">
+                  Something went wrong sending the form. Please try again or email us directly.
+                </p>
+              )}
             </form>
           )}
         </div>
